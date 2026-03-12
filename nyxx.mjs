@@ -1,11 +1,14 @@
+// load variables from .env into process.env (install dotenv if you haven't already)
+import dotenv from 'dotenv';
+
+// read .env file now so process.env contains FLUXER_BOT_TOKEN
+dotenv.config();
+
 import {Client, GatewayDispatchEvents} from '@discordjs/core';
 import {REST} from '@discordjs/rest';
 import {WebSocketManager} from '@discordjs/ws';
 
 const token = process.env['FLUXER_BOT_TOKEN'];
-if (!token) {
-  throw new Error('You forgot the token!');
-}
 
 const rest = new REST({api: 'https://api.fluxer.app', version: '1'}).setToken(token);
 
