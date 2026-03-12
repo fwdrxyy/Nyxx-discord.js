@@ -6,13 +6,18 @@ dotenv.config();
 import {Client, GatewayDispatchEvents} from '@discordjs/core';
 import {REST} from '@discordjs/rest';
 import {WebSocketManager} from '@discordjs/ws';
+import {GatewayIntentBits} from 'discord.js';
 
 const token = process.env['FLUXER_BOT_TOKEN'];
 
 const rest = new REST({api: 'https://api.fluxer.app', version: '1'}).setToken(token);
 
 const gateway = new WebSocketManager({
-  intents: 0,
+  // require guilds, guild messages and content to receive message events
+  intents:
+    GatewayIntentBits.Guilds |
+    GatewayIntentBits.GuildMessages |
+    GatewayIntentBits.MessageContent,
   rest,
   token,
   version: '1',
