@@ -1,4 +1,3 @@
-// load variables from .env into process.env (install dotenv if you haven't already)
 import dotenv from 'dotenv';
 
 // read .env file now so process.env contains FLUXER_BOT_TOKEN
